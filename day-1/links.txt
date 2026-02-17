@@ -1,0 +1,14 @@
+
+https://www.cisco.com/site/us/en/learn/topics/security/what-is-it-security.html
+https://www.solarwinds.com/resources/it-glossary/observability
+
+https://docs.dynatrace.com/docs/ingest-from/technology-support/oneagent-platform-and-capability-support-matrix
+
+https://www.ibm.com/think/topics/apdex
+
+https://raygun.com/blog/apdex-score-guide/
+https://www.headspin.io/blog/guide-to-test-website-performance
+
+https://ahrefs.com/blog/cumulative-layout-shift-cls/
+
+https://www.dynatrace.com/news/blog/what-are-slos/
