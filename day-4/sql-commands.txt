@@ -1,0 +1,17 @@
+sudo apt update
+sudo apt install mysql-server -y
+sudo systemctl start mysql
+sudo systemctl enable mysql
+sudo systemctl status mysql
+sudo mysql
+
+
+
+CREATE DATABASE factory;
+CREATE USER 'factoryuser'@'localhost' IDENTIFIED BY 'password';
+GRANT ALL PRIVILEGES ON factory.* TO 'factoryuser'@'localhost';
+FLUSH PRIVILEGES;
+EXIT;
+
+npm install mysql2
+
