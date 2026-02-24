@@ -8,3 +8,14 @@ kubectl -n dynatrace create secret generic dynakube \
   --from-literal="dataIngestToken=<YOUR_INGEST_TOKEN>"
 
 sudo kubectl -n dynatrace get secrets
+
+curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3
+chmod 700 get_helm.sh
+sudo ./get_helm.sh
+helm version
+sudo chmod 644 /etc/rancher/k3s/k3s.yaml
+export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
+helm repo add dynatrace https://raw.githubusercontent.com/Dynatrace/dynatrace-operator/main/config/helm/repos/stable
+helm repo update
+helm install dynatrace-operator dynatrace/dynatrace-operator -n dynatrace
+kubectl get pods -n dynatrace
