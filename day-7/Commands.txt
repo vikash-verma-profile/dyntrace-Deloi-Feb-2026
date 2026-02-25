@@ -19,3 +19,8 @@ helm repo add dynatrace https://raw.githubusercontent.com/Dynatrace/dynatrace-op
 helm repo update
 helm install dynatrace-operator dynatrace/dynatrace-operator -n dynatrace
 kubectl get pods -n dynatrace
+
+kubectl -n dynatrace logs deployment/dynatrace-operator
+kubectl create deployment nginx-demo --image=nginx
+kubectl expose deployment nginx-demo --port=80 --type=ClusterIP
+kubectl get pods

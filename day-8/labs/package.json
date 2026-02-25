@@ -1,0 +1,15 @@
+{
+  "name": "ecommerce-lab-app",
+  "version": "1.0.0",
+  "description": "E-commerce lab app for Dynatrace log correlation and security detection",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "morgan": "^1.10.0",
+    "sqlite3": "^5.1.6",
+    "winston": "^3.10.0"
+  }
+}

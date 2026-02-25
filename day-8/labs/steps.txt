@@ -1,0 +1,37 @@
+mkdir ecommerce-lab-app
+cd ecommerce-lab-app
+
+# create files and paste code
+npm install
+node server.js
+
+
+Generate failures:
+for i in {1..60}; do curl -X POST http://localhost:3000/checkout; done
+
+Generate errors:
+curl http://localhost:3000/error
+
+SQL injection test:
+http://localhost:3000/login?username=admin' OR '1'='1&password=test
+
+
+Check in Dynatrace
+
+Logs:
+severity="ERROR"
+
+Problem:
+High failure rate in checkout-service
+
+Security:
+SQL Injection detected
+
+Vulnerabilities:
+express 4.x CVE (if vulnerable version used)
+
+
+DQL query:
+fetch logs
+| filter severity == "ERROR"
+| sort timestamp desc
