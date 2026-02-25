@@ -24,3 +24,14 @@ kubectl -n dynatrace logs deployment/dynatrace-operator
 kubectl create deployment nginx-demo --image=nginx
 kubectl expose deployment nginx-demo --port=80 --type=ClusterIP
 kubectl get pods
+
+curl -v https://yht31278.apps.dynatrace.com
+
+
+remove kubenates
+
+sudo /usr/local/bin/k3s-uninstall.sh
+sudo rm -rf /etc/rancher
+sudo rm -rf /var/lib/rancher
+sudo rm -rf /var/lib/kubelet
+sudo rm -rf /etc/kubernetes

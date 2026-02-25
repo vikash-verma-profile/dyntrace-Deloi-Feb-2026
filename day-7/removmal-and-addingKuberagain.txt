@@ -1,0 +1,27 @@
+1.curl -sfL https://get.k3s.io | sh -
+2.sudo kubectl get nodes
+3.sudo chmod 644 /etc/rancher/k3s/k3s.yaml
+4.export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
+5.helm install dynatrace-operator oci://public.ecr.aws/dynatrace/dynatrace-operator \
+--create-namespace \
+--namespace dynatrace \
+--atomic
+
+6.kubectl delete secret dynakube  -n dynatrace
+7.kubectl delete secret eks-k8s-2026-02-25-1771990698  -n dynatrace
+
+8.kubectl create secret generic eks-k8s-2026-02-25-1771990698 \
+  --from-literal="apiToken=<Dynatrace Operator token>" \
+  --from-literal="dataIngestToken=<Data ingest token>" \
+  -n dynatrace
+
+9.kubectl -n dynatrace create secret generic dynakube \
+  --from-literal="apiToken=<Dynatrace Operator token>" \
+  --from-literal="dataIngestToken=<Data ingest token>"
+
+10.rm dynakube.yaml
+11.nano dynakube.yaml
+12.kubectl apply -f dynakube.yaml
+sudo systemctl stop oneagent
+sudo systemctl status oneagent
+sudo systemctl start oneagent
