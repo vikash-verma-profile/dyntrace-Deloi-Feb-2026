@@ -7,7 +7,6 @@ router.get("/", (req, res) => {
   const username = req.query.username;
   const password = req.query.password;
 
-  // ❌ Intentionally vulnerable query (DO NOT USE IN PRODUCTION)
   const query = `SELECT * FROM users WHERE username='${username}' AND password='${password}'`;
 
   logger.info(`Executing query: ${query}`);
