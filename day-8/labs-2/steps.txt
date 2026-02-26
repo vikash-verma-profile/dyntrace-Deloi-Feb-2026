@@ -48,3 +48,10 @@ DQL query:
 fetch logs
 | filter severity == "ERROR"
 | sort timestamp desc
+
+
+rm db.js
+nano db.js
+cd routes
+rm login.js
+nano login.js

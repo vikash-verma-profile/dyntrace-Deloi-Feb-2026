@@ -1,0 +1,43 @@
+dt0c01.Y5QAIBQTTDRW65JBFAFZYJ5N.2MEZ5AAAEGX3J5F645S5QGOIQ76R6Q4KDBZLPHAX7UHM6BORKGOZ64PDE7PA7FWO
+
+
+fetch dt.davis.problems
+| summarize count(), alias:`total problems` 
+
+
+curl --location 'https://yht31278.live.dynatrace.com/api/v2/logs/ingest' \
+--header 'Authorization: Api-Token dt0c01.Y5QAIBQTTDRW65JBFAFZYJ5N.2MEZ5AAAEGX3J5F645S5QGOIQ76R6Q4KDBZLPHAX7UHM6BORKGOZ64PDE7PA7FWO' \
+--header 'Content-Type: application/json; charset=utf-8' \
+--data-raw '[
+  {
+    "content": "dyntrace test service failed due to database timeout",
+    "severity": "ERROR",
+    "log.source": "ecommerce-app-test",
+    "service.name": "payment-service-test"
+  }
+]'
+
+
+curl -X POST "https://yht31278.live.dynatrace.com/api/v2/events/ingest" \
+-H "Authorization: Api-Token <TOKEN>" \
+-H "Content-Type: application/json" \
+--data-raw '[
+  {
+    "eventType": "CUSTOM_ANNOTATION",
+    "title": "Deployment to Production",
+    "properties": {
+      "service": "payment-service"
+    }
+  }
+]'
+
+
+curl -X POST "https://yht31278.live.dynatrace.com/api/v2/metrics/ingest" \
+-H "Authorization: Api-Token <TOKEN>" \
+-H "Content-Type: text/plain" \
+--data-raw "custom.payment.failures,service=payment-service count=5"
+
+
+
+curl -X GET "https://yht31278.live.dynatrace.com/api/v2/entities?entitySelector=type(SERVICE)" \
+-H "Authorization: Api-Token <TOKEN>"
